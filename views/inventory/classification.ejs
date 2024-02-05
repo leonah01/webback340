@@ -1,0 +1,11 @@
+<!-- the tittle value in the controller and pass as name-value pair to the view -->
+
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
+
+<!-- it is not uncommon to need to display messages in a view when error occurs-->
+<%# message() %>
+
+<!--the main content delivery mechanism for the view-->
+<%- grid %>

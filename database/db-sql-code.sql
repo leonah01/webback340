@@ -35,6 +35,18 @@ CREATE TABLE IF NOT EXISTS public.account (
     account_type account_type NOT NULL DEFAULT 'Client'::account_type,
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
+UPDATE public.inventory
+SET inv_image = REPLACE(inv_image, '/images', '/vehicles/images'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/vehicles/images');
+UPDATE public.inventory
+SET inv_image = REGEXP_REPLACE(inv_image, '/images\M', '/images/vehicles', 'g');
+UPDATE public.inventory
+SET inv_thumbnail = REGEXP_REPLACE(
+        inv_thumbnail,
+        '/images\M',
+        '/images/vehicles',
+        'g'
+    );
 -- Data for table 'classification' 
 INSERT INTO public.classification (classification_name)
 VALUES ('custom'),
