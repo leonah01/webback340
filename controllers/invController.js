@@ -57,6 +57,7 @@ invCont.displayInventoryManagementView = async function (req, res, next) {
     res.render("inventory/management", {
       title: "Manage Inventory",
       nav,
+      errors: null
     });
   } catch (error) {
     next(error);

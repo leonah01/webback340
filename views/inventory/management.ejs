@@ -1,6 +1,7 @@
 <% if (title) { %>
 <h1><%- title %></h1>
-<% } else {res.redirect('/') } %> <%# Unity 4, activity %> <%#- messages() %>
+<% } else {res.redirect('/') } %> <%# Unity 4, activity %> 
+<%- messages() %>
 
-<h3><a href="/inv/addclassification">Add New Classification</a></h3>
-<h3><a href="/inv/addinventory">Add New Vehicle</a></h3>
+<h3><a href="/inv/add-classification">Add New Classification</a></h3>
+<h3><a href="/inv/add-inventory">Add New Vehicle</a></h3>
