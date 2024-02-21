@@ -1,0 +1,45 @@
+<% if (title) { %>
+<h1><%- title %></h1>
+<% } else {res.redirect('/') } %> <%# Unity 4, activity %> <%- messages() %> <%
+if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<div class="content">
+  <p>All fields are required.</p>
+  <form id="requestQuoteForm" action="/account/quote" method="post">
+    <fieldset>
+      <label for="quote_firstname">First name:</label><br />
+      <input
+        type="text"
+        id="quote_firstname"
+        name="quote_firstname"
+        size="10"
+        required
+        value="<%= locals.quote_firstname %>"
+      /><br /><br />
+      <label for="quote_lastname">Last name:</label><br />
+      <input
+        type="text"
+        id="quote_lastname"
+        name="quote_lastname"
+        required
+        value="<%= locals.quote_lastname %>"
+      /><br /><br />
+      <label for="quote_email">Email Address:</label><br />
+      <input
+        type="email"
+        id="quote_email"
+        name="quote_email"
+        required
+        value="<%= locals.quote_email %>"
+      /><br /><br />
+      <%- grid %>
+      <input id="BtnRegister" type="submit" value="Request Quote" />
+    </fieldset>
+  </form>
+</div>

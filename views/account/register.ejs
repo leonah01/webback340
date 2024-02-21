@@ -1,0 +1,57 @@
+<% if (title) { %>
+<h1><%- title %></h1>
+<% } else {res.redirect('/') } %> <%# Unity 4, activity %> <%- messages() %> <%
+if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<div class="content">
+  <section id="form">
+    <form id="registerForm" action="/account/register" method="post">
+      <p>All fields are required.</p>
+      <fieldset>
+        <label for="account_firstname">First name:</label><br />
+        <input
+          type="text"
+          id="account_firstname"
+          name="account_firstname"
+          size="10"
+          required
+          value="<%= locals.account_firstname %>"
+        /><br /><br />
+        <label for="account_lastname">Last name:</label><br />
+        <input
+          type="text"
+          id="account_lastname"
+          name="account_lastname"
+          required
+          value="<%= locals.account_lastname %>"
+        /><br /><br />
+        <label for="account_email">Email Address:</label><br />
+        <input
+          type="email"
+          id="account_email"
+          name="account_email"
+          required
+          value="<%= locals.account_email %>"
+        /><br /><br />
+        <label for="account_password">Password:</label><br />
+        <input
+          type="password"
+          id="account_password"
+          name="account_password"
+          required
+        />
+        ><br /><br />
+        <input id="pswdBtn" type="button" value="Show Password" /><br /><br />
+        <input id="BtnRegister" type="submit" value="Register" />
+      </fieldset>
+    </form>
+  </section>
+</div>
+
+<script src="/js/script.js"></script>

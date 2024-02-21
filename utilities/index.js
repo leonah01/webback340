@@ -1,6 +1,8 @@
 const invModel = require("../models/inventory-model");
 const Util = {};
-
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const utilities = require("../utilities/");
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
@@ -92,6 +94,22 @@ Util.buildClassificationDropdown = async function () {
   dropdown += "</select>";
   return dropdown;
 };
+/* ************************
+ * Constructs the nav HTML unordered list
+ ************************** */
+Util.getQuoteVehicle = async function (req, res, next) {
+  let data = await invModel.getInventoryVehicle();
+  let list =
+    "<label>Vehicle: <br><input list='quote_model' name='quote_model' placeholder = 'Choose a Vehicle' autocomplete='off'></label><br><br>";
+  list += "<datalist id='quote_model'>";
+  data.rows.forEach((row) => {
+    list += "<option value=" + row.inv_model + ">";
+    list += "</option>";
+  });
+  list += "</datalist>";
+  return list;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for

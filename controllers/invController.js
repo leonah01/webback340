@@ -34,6 +34,7 @@ invCont.buildBySingleViewId = async function (req, res, next) {
     grid,
   });
 };
+
 invCont.getInventoryItems = async function (req, res, next) {
   try {
     const invId = req.params.id;

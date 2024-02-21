@@ -232,7 +232,9 @@ footer {
 form {
   margin-bottom: 20px;
 }
-
+.content {
+  max-width: 30rem;
+}
 label {
   display: inline-block;
   width: 200px;

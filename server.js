@@ -16,6 +16,7 @@ const utilities = require("./utilities/index");
 const session = require("express-session");
 const pool = require("./database/");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 /* ***********************
  * Middleware
@@ -32,7 +33,6 @@ app.use(
     name: "sessionId",
   })
 );
-
 // Express Messages Middleware
 app.use(require("connect-flash")());
 app.use(function (req, res, next) {
@@ -59,6 +59,8 @@ app.use(static);
 app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
+// Account routes
+app.use("/account", require("./routes/accountRoute"));
 
 //* File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
